@@ -11,6 +11,8 @@ export default class Visualizer extends React.Component {
 		this.state = {
 			array: []
 		};
+
+		this.resetArray = this.resetArray.bind(this);
 	}
 
 	componentDidMount() {
@@ -44,7 +46,7 @@ export default class Visualizer extends React.Component {
 					/>
 				))}
 				<div className="container">
-					<button>Generate New</button>
+					<button onClick={this.resetArray}>Generate New</button>
 					<button>Merge Sort</button>
 				</div>
 			</div>
