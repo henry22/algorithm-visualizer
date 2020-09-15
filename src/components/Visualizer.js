@@ -1,6 +1,7 @@
 import React from 'react';
 import { mergeSortAnimation } from '../utility/Sorting';
-import '../Visualizer.css';
+import './Visualizer.css';
+import Navbar from './Navbar'
 
 const ANIMATION_SPEED_MS = 10;
 const NUMBER_OF_ARRAY_BARS = 100;
@@ -62,20 +63,20 @@ export default class Visualizer extends React.Component {
 	render() {
 		const { array } = this.state;
 		return (
-			<div className="array-container">
-				{array.map((val, idx) => (
-					<div
-						className="array-bar"
-						key={idx}
-						style={{
-							backgroundColor: PRIMARY_COLOR,
-							height: `${val}px`
-						}}
-					/>
-				))}
-				<div className="container">
-					<button onClick={this.resetArray}>Generate New</button>
-					<button onClick={this.mergeSort}>Merge Sort</button>
+			<div className="main">
+				<Navbar resetArray={this.resetArray} mergeSort={this.mergeSort} />
+
+				<div className="array-container">
+					{array.map((val, idx) => (
+						<div
+							className="array-bar"
+							key={idx}
+							style={{
+								backgroundColor: PRIMARY_COLOR,
+								height: `${val}px`
+							}}
+						/>
+					))}
 				</div>
 			</div>
 		);
