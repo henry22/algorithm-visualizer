@@ -8,7 +8,7 @@ export function bubbleSort(items) {
 
 		for (let i = 0; i < resultItems.length - 1; i++) {
 			if (resultItems[i].itemValue > resultItems[i + 1].itemValue) {
-				[resultItems[i], resultItems[i + 1]] = [resultItems[i + 1], resultItems[i]];
+				[ resultItems[i], resultItems[i + 1] ] = [ resultItems[i + 1], resultItems[i] ];
 				isSorted = false;
 
 				results.push(JSON.parse(JSON.stringify(resultItems)));
@@ -26,8 +26,8 @@ export function insertionSort(items) {
 	for (let i = 1; i < resultItems.length; i++) {
 		let j = i;
 		while (j > 0 && resultItems[j].itemValue < resultItems[j - 1].itemValue) {
-			[resultItems[j], resultItems[j - 1]] = [resultItems[j - 1], resultItems[j]]
-			j -= 1
+			[ resultItems[j], resultItems[j - 1] ] = [ resultItems[j - 1], resultItems[j] ];
+			j -= 1;
 			results.push(JSON.parse(JSON.stringify(resultItems)));
 		}
 	}
@@ -40,7 +40,7 @@ export function selectionSort(items) {
 
 	let resultItems = JSON.parse(JSON.stringify(items));
 
-	let current_index = 0
+	let current_index = 0;
 	while (current_index < resultItems.length - 1) {
 		let min_val = resultItems[current_index].itemValue;
 		let min_idx = current_index;
@@ -52,8 +52,8 @@ export function selectionSort(items) {
 			}
 		}
 
-		[resultItems[current_index], resultItems[min_idx]] = [resultItems[min_idx], resultItems[current_index]];
-		current_index += 1
+		[ resultItems[current_index], resultItems[min_idx] ] = [ resultItems[min_idx], resultItems[current_index] ];
+		current_index += 1;
 		results.push(JSON.parse(JSON.stringify(resultItems)));
 	}
 
@@ -62,7 +62,7 @@ export function selectionSort(items) {
 }
 
 export function mergeSort(items) {
-	console.log('merge sort items')
+	console.log('merge sort items');
 	let results = [];
 	let resultItems = JSON.parse(JSON.stringify(items));
 
@@ -75,13 +75,13 @@ export function mergeSort(items) {
 		const left = unsortedArray.slice(0, middle);
 		const right = unsortedArray.slice(middle);
 
-		return merge(
-			mergeSort(left), mergeSort(right)
-		);
+		return merge(mergeSort(left), mergeSort(right));
 	}
 
 	function merge(left, right) {
-		let resultArray = [], leftIndex = 0, rightIndex = 0;
+		let resultArray = [],
+			leftIndex = 0,
+			rightIndex = 0;
 
 		while (leftIndex < left.length && rightIndex < right.length) {
 			if (left[leftIndex].itemValue < right[rightIndex].itemValue) {
@@ -107,9 +107,8 @@ export function quickSort(items) {
 	let resultItems = JSON.parse(JSON.stringify(items));
 
 	function quickSortHelper(arr, left, right) {
-		let pivot
-		let partitionIndex
-
+		let pivot;
+		let partitionIndex;
 
 		if (left < right) {
 			pivot = right;
@@ -123,17 +122,17 @@ export function quickSort(items) {
 	}
 
 	function partition(arr, pivot, left, right) {
-		let pivotValue = arr[pivot].itemValue,
-			partitionIndex = left;
+		let pivotValue = arr[pivot].itemValue;
+		let partitionIndex = left;
 
 		for (let i = left; i < right; i++) {
 			if (arr[i].itemValue < pivotValue) {
-				[arr[i], arr[partitionIndex]] = [arr[partitionIndex], arr[i]]
+				[ arr[i], arr[partitionIndex] ] = [ arr[partitionIndex], arr[i] ];
 				partitionIndex++;
 			}
 			results.push(JSON.parse(JSON.stringify(arr)));
 		}
-		[arr[right], arr[partitionIndex]] = [arr[partitionIndex], arr[right]]
+		[ arr[right], arr[partitionIndex] ] = [ arr[partitionIndex], arr[right] ];
 		return partitionIndex;
 	}
 
@@ -144,23 +143,23 @@ export function quickSort(items) {
 }
 
 export function getAlgoFunction(algoFunction) {
-	if (algoFunction === "BubbleSort") {
+	if (algoFunction === 'BubbleSort') {
 		return bubbleSort;
 	}
 
-	if (algoFunction === "InsertionSort") {
+	if (algoFunction === 'InsertionSort') {
 		return insertionSort;
 	}
 
-	if (algoFunction === "SelectionSort") {
+	if (algoFunction === 'SelectionSort') {
 		return selectionSort;
 	}
 
-	if (algoFunction === "MergeSort") {
+	if (algoFunction === 'MergeSort') {
 		return mergeSort;
 	}
 
-	if (algoFunction === "QuickSort") {
+	if (algoFunction === 'QuickSort') {
 		return quickSort;
 	}
 }
