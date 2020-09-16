@@ -9,9 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Tech stack
 - Front End
-* React
-* Material-UI
-* Framer Motion
+  - React
+  - Material-UI
+  - Framer Motion
 - Back End(In progress)
 
 ## Available Scripts
