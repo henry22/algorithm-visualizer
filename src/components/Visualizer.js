@@ -8,7 +8,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { generateRandomArray } from '../utility/Util';
@@ -85,9 +84,11 @@ export default function Visualizer() {
 
 	function checkSwappedElements(itemsPrev, itemsCurrent) {
 		let newItems = [];
+		// console.log(items, itemsPrev, itemsCurrent)
 		for (let i = 0; i < items.length; i++) {
+			// console.log(itemsPrev[i], itemsCurrent[i])
 			newItems[i] = itemsCurrent[i];
-			console.log(itemsCurrent[i], itemsPrev[i]);
+
 			if (itemsCurrent[i].itemValue !== itemsPrev[i].itemValue) {
 				newItems[i].IsBeingSwapped = true;
 			}
@@ -99,10 +100,8 @@ export default function Visualizer() {
 		const result = getAlgoFunction(algoFunction)(items);
 
 		for (let i = 0; i < result.length; i++) {
-			console.log('result', result[i]);
 			if (i !== result.length - 1) {
-				let resultItemsWithSwapState =
-					i === 0 ? checkSwappedElements(items, result[i]) : checkSwappedElements(result[i - 1], result[i]);
+				let resultItemsWithSwapState = i === 0 ? checkSwappedElements(items, result[i]) : checkSwappedElements(result[i-1], result[i]);
 				setTimeout(() => {
 					setItems(resultItemsWithSwapState);
 				}, i * speed);
@@ -127,12 +126,31 @@ export default function Visualizer() {
 	return (
 		<React.Fragment>
 			<CssBaseline />
-			<AppBar position="static">
+			<AppBar position="fixed">
 				<Toolbar>
 					<Typography variant="h6">Logo</Typography>
+
+					<Grid item xs={12}>
+						<FormControl component="fieldset">
+							<RadioGroup
+								row
+								aria-label="algorithm"
+								name="algorithm"
+								value={algoFunction}
+								onChange={(e) => setAlgoFunction(e.target.value)}
+							>
+								<FormControlLabel value="BubbleSort" control={<Radio />} label="BubbleSort" />
+								<FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
+								<FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
+								{/* <FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" />
+								<FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
+							</RadioGroup>
+						</FormControl>
+					</Grid>
 				</Toolbar>
 			</AppBar>
-			<Container maxWidth="lg" style={{ height: '100vh' }}>
+			<Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
+
 				<Grid container spacing={3}>
 					{inputType === 'DefaultInput' && (
 						<Grid item xs={12}>
@@ -169,56 +187,50 @@ export default function Visualizer() {
 						</FormControl>
 					</Grid>
 					{inputType === 'CustomInput' && (
-						<Grid item xs={12}>
-							<TextField
-								id="custom_input"
-								onChange={customInput}
-								type="text"
-								placeholder="Insert space separated numbers. Eg: 23 7 12 90"
-								style={{ width: '100%' }}
-							/>
-							<Button disabled={process} variant="contained" color="primary" onClick={() => submit()}>
-								Done!
+						<Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+							<Grid item xs={10}>
+								<TextField
+									id="custom_input"
+									onChange={customInput}
+									type="text"
+									placeholder="Insert space separated numbers. ex: 23 7 12 90"
+									style={{ width: '100%', marginBottom: '20px' }}
+								/>
+							</Grid>
+
+							<Grid item xs={2}>
+								<Button disabled={process} variant="contained" color="primary" onClick={() => submit()}>
+									Done!
 							</Button>
+							</Grid>
 						</Grid>
 					)}
-					<Grid item xs={12}>
-						<FormControl component="fieldset">
-							<FormLabel component="legend">Sorting Algorithm</FormLabel>
-							<RadioGroup
-								row
-								aria-label="algorithm"
-								name="algorithm"
-								value={algoFunction}
-								onChange={(e) => setAlgoFunction(e.target.value)}
-							>
-								<FormControlLabel value="BubbleSort" control={<Radio />} label="BubbleSort" />
-								<FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
-								<FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
-								<FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" />
-								<FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" />
-							</RadioGroup>
-						</FormControl>
-					</Grid>
 
 					<Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
-						<Button disabled={process} variant="contained" color="primary" onClick={() => runAlgorithm()}>
-							Sort!
-						</Button>
-						<Button color="secondary" variant="contained" onClick={resetNumbers}>
-							RESET
-						</Button>
+						<Grid item xs={4}>
+							<Button color="secondary" variant="contained" onClick={resetNumbers}>
+								RESET
+							</Button>
+						</Grid>
 
-						<TextField
-							id="standard-number"
-							label="Speed (ms)"
-							type="number"
-							InputLabelProps={{
-								shrink: true
-							}}
-							value={speed}
-							onChange={changeSpeed}
-						/>
+						<Grid item xs={4}>
+							<Button disabled={process} variant="contained" color="primary" onClick={() => runAlgorithm()}>
+								Sort!
+							</Button>
+						</Grid>
+
+						<Grid item xs={4}>
+							<TextField
+								id="standard-number"
+								label="Speed (ms)"
+								type="number"
+								InputLabelProps={{
+									shrink: true
+								}}
+								value={speed}
+								onChange={changeSpeed}
+							/>
+						</Grid>
 					</Grid>
 
 					<Grid item xs={12}>
