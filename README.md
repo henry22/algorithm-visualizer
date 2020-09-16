@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## User Story
+- Users are able to view the sorting algorithm animation
+- Users are able to adjust the number of bar charts
+- Users are able to customize the number of bar charts
+- Users are able to adjust the speed of the animation
+- Users are able to reset generating new bar charts
+
+## Tech stack
+- Front End
+* React
+* Material-UI
+* Framer Motion
+- Back End(In progress)
+
 ## Available Scripts
 
 In the project directory, you can run:
