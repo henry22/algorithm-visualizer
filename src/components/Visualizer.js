@@ -101,7 +101,8 @@ export default function Visualizer() {
 
 		for (let i = 0; i < result.length; i++) {
 			if (i !== result.length - 1) {
-				let resultItemsWithSwapState = i === 0 ? checkSwappedElements(items, result[i]) : checkSwappedElements(result[i-1], result[i]);
+				let resultItemsWithSwapState =
+					i === 0 ? checkSwappedElements(items, result[i]) : checkSwappedElements(result[i - 1], result[i]);
 				setTimeout(() => {
 					setItems(resultItemsWithSwapState);
 				}, i * speed);
@@ -143,15 +144,14 @@ export default function Visualizer() {
 								<FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
 								<FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
 								{/* <FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" />
-								<FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
+              <FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
 							</RadioGroup>
 						</FormControl>
 					</Grid>
 				</Toolbar>
 			</AppBar>
 			<Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-
-				<Grid container spacing={3}>
+				<Grid container>
 					{inputType === 'DefaultInput' && (
 						<Grid item xs={12}>
 							<Typography component="h4" variant="h4">
@@ -187,7 +187,7 @@ export default function Visualizer() {
 						</FormControl>
 					</Grid>
 					{inputType === 'CustomInput' && (
-						<Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+						<Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
 							<Grid item xs={10}>
 								<TextField
 									id="custom_input"
@@ -201,7 +201,7 @@ export default function Visualizer() {
 							<Grid item xs={2}>
 								<Button disabled={process} variant="contained" color="primary" onClick={() => submit()}>
 									Done!
-							</Button>
+								</Button>
 							</Grid>
 						</Grid>
 					)}
@@ -214,7 +214,12 @@ export default function Visualizer() {
 						</Grid>
 
 						<Grid item xs={4}>
-							<Button disabled={process} variant="contained" color="primary" onClick={() => runAlgorithm()}>
+							<Button
+								disabled={process}
+								variant="contained"
+								color="primary"
+								onClick={() => runAlgorithm()}
+							>
 								Sort!
 							</Button>
 						</Grid>
