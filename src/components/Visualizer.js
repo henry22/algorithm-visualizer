@@ -6,7 +6,7 @@ import { uid } from 'react-uid';
 import { generateRandomArray } from '../utility/Util';
 import { getAlgoFunction } from '../utility/Sorting';
 
-export default function Visualizer() {
+const Visualizer = () => {
 	const [ speed, setSpeed ] = useState(1000);
 	const [ numItems, setNumItems ] = useState(5);
 	const [ isSorted, setIsSorted ] = useState(false);
@@ -18,7 +18,7 @@ export default function Visualizer() {
 	const minItems = 2;
 	const maxItems = 30;
 
-	function changeSpeed(e) {
+	const changeSpeed = (e) => {
 		const newSpeed = e.target.value;
 		if (newSpeed < 0 || newSpeed > 1000) {
 			alert('Speed should be between 0 and 1000 ms');
@@ -27,12 +27,12 @@ export default function Visualizer() {
 		}
 	}
 
-	function customInput(e) {
+	const customInput = (e) => {
 		let input = e.target.value.split(' ').filter((number) => parseInt(number));
 		setCustomNumbers(input);
 	}
 
-	function submit() {
+	const submit = () => {
 		setItems([]);
 		let customItems = [];
 		for (let i = 0; i < customNumbers.length; i++) {
@@ -47,14 +47,14 @@ export default function Visualizer() {
 		setItems(customItems);
 	}
 
-	function reset(num) {
+	const reset = (num) => {
 		setProcess(false);
 		setAlgoFunction('BubbleSort');
 		setIsSorted(false);
 		setNewItems(num);
 	}
 
-	function resetNumbers() {
+	const resetNumbers = () => {
 		setProcess(false);
 		setIsSorted(false);
 		setAlgoFunction(algoFunction);
@@ -62,7 +62,7 @@ export default function Visualizer() {
 		setItems(randomItems);
 	}
 
-	function setNewItems(num) {
+	const setNewItems = (num) => {
 		if (num === numItems) {
 			return;
 		}
@@ -72,7 +72,7 @@ export default function Visualizer() {
 		setItems(randomItems);
 	}
 
-	function checkSwappedElements(itemsPrev, itemsCurrent) {
+	const checkSwappedElements = (itemsPrev, itemsCurrent) => {
 		let newItems = [];
 		// console.log(items, itemsPrev, itemsCurrent)
 		for (let i = 0; i < items.length; i++) {
@@ -86,7 +86,7 @@ export default function Visualizer() {
 		return newItems;
 	}
 
-	function runAlgorithm() {
+	const runAlgorithm = () => {
 		const result = getAlgoFunction(algoFunction)(items);
 
 		for (let i = 0; i < result.length; i++) {
@@ -108,7 +108,7 @@ export default function Visualizer() {
 		}
 	}
 
-	function handleClose(reason) {
+	const handleClose = (reason) => {
 		if (reason === 'clickaway') {
 			return;
 		}
@@ -257,3 +257,5 @@ export default function Visualizer() {
 		</React.Fragment>
 	);
 }
+
+export default Visualizer

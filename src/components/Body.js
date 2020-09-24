@@ -16,7 +16,7 @@ const liStyle = {
   display: 'grid'
 }
 
-export default function Body({ items }) {
+const Body = ({ items }) => {
   let liHeight = Math.floor((window.innerHeight / 2) / 100);
   let liWidth = 32;
 
@@ -41,3 +41,5 @@ export default function Body({ items }) {
     </div>
   )
 }
+
+export default Body;
