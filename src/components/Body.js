@@ -30,7 +30,7 @@ const Body = ({ items }) => {
             layoutTransition={springAnimation}
             style={{
               ...liStyle,
-              background: item.IsBeingSwapped === true ? "#2bc5bf" : item.color,
+              background: item.IsBeingSwapped ? "#2bc5bf" : item.color,
               width: liWidth,
               height: liHeight * (item.itemValue + 10),
             }}>

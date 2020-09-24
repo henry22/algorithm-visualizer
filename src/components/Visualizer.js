@@ -245,13 +245,6 @@ const Visualizer = () => {
 					autoHideDuration={3000}
 					onClose={handleClose}
 					message="Sorting completed!"
-					action={
-						<React.Fragment>
-							<Button color="secondary" size="small" onClick={resetNumbers}>
-								RESET
-							</Button>
-						</React.Fragment>
-					}
 				/>
 			</Container>
 		</React.Fragment>
