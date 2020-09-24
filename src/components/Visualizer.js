@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { Slider, Snackbar } from '@material-ui/core';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { generateRandomArray } from '../utility/Util';
+import { Grid, CssBaseline, Typography, Container, Slider, Snackbar, Radio, RadioGroup, FormControlLabel, FormControl, Button, TextField, AppBar, Toolbar} from '@material-ui/core';
+
 import Body from './Body';
-import { getAlgoFunction } from '../utility/Sorting';
 import { uid } from 'react-uid';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { generateRandomArray } from '../utility/Util';
+import { getAlgoFunction } from '../utility/Sorting';
 
 export default function Visualizer() {
 	const [ speed, setSpeed ] = useState(1000);
