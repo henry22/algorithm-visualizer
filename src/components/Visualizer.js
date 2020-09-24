@@ -8,13 +8,14 @@ import { getAlgoFunction } from '../utility/Sorting';
 
 export default function Visualizer() {
 	const [ speed, setSpeed ] = useState(1000);
-	const [ numItems, setNumItems ] = useState(2);
+	const [ numItems, setNumItems ] = useState(5);
 	const [ isSorted, setIsSorted ] = useState(false);
 	const [ algoFunction, setAlgoFunction ] = useState('BubbleSort');
 	const [ inputType, setInputType ] = useState('DefaultInput');
 	const [ process, setProcess ] = useState(false);
 	const [ items, setItems ] = useState(generateRandomArray(numItems));
 	const [ customNumbers, setCustomNumbers ] = useState([]);
+	const minItems = 2;
 	const maxItems = 30;
 
 	function changeSpeed(e) {
@@ -140,7 +141,9 @@ export default function Visualizer() {
 				</Toolbar>
 			</AppBar>
 			<Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-				<Grid container>
+				<Grid container style={{
+					maxHeight: '500px'
+				}}>
 					{inputType === 'DefaultInput' && (
 						<Grid item xs={12}>
 							<Typography component="h4" variant="h4">
@@ -152,10 +155,11 @@ export default function Visualizer() {
 					{inputType === 'DefaultInput' && (
 						<Grid item xs={12}>
 							<Slider
-								value={typeof numItems === 'number' ? numItems : 0}
+								value={typeof numItems === 'number' ? numItems : 2}
 								onChange={(e, newValue) => reset(newValue)}
 								aria-labelledby="input-slider"
 								valueLabelDisplay="auto"
+								min={minItems}
 								max={maxItems}
 							/>
 						</Grid>
@@ -231,6 +235,7 @@ export default function Visualizer() {
 						<Body items={items} />
 					</Grid>
 				</Grid>
+
 				<Snackbar
 					anchorOrigin={{
 						vertical: 'bottom',

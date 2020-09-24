@@ -21,7 +21,7 @@ export default function Body({ items }) {
   let liWidth = 32;
 
   return (
-    <div style={{ display: 'inline-flex', justifyItems: 'center' }}>
+    <div style={{ display: 'inline-flex', justifyItems: 'center', alignItems: 'flex-end' }}>
       {
         items.map(item =>
           <motion.div
@@ -32,7 +32,7 @@ export default function Body({ items }) {
               ...liStyle,
               background: item.IsBeingSwapped === true ? "#2bc5bf" : item.color,
               width: liWidth,
-              height: liHeight * (item.itemValue + 10)
+              height: liHeight * (item.itemValue + 10),
             }}>
             <h6 style={{ margin: 0 }}>{item.itemValue}</h6>
           </motion.div>
