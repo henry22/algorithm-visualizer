@@ -1,5 +1,5 @@
+import { SET_ARRAY } from '../../actions'
 const initialState = []
-const SET_ARRAY = 'SET_ARRAY'
 
 const array = (state = initialState, action) => {
   switch (action.type) {
