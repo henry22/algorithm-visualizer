@@ -1,13 +1,12 @@
-import { SET_ARRAY } from '../../actions'
+import { createAction, handleActions } from 'redux-actions'
+
 const initialState = []
 
-const array = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_ARRAY:
-      return [...state]
-    default:
-      return state
-  }
-}
+export const SET_ARRAY = 'SET_ARRAY'
+export const setArray = createAction(SET_ARRAY)
 
-export default array
+export const array = handleActions({
+  SET_ARRAY: (state, { payload }) => {
+    return payload
+  }
+}, initialState)

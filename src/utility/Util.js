@@ -1,19 +1,18 @@
-import {uid} from 'react-uid'
+// import { uid } from 'react-uid'
 
 export function generateRandomArray(length) {
-  const set = new Set()
-  const randomItems = []
+  const randomItems = new Set()
 
-  for(let i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     const randomNumber = Math.floor(Math.random() * 101)
 
-    if (!set.has(randomNumber)) {
-      randomItems.push({ id: uid(Math.random()), itemValue: randomNumber, color: '#2d8ae2' })
-      set.add(randomNumber)
+    if (!randomItems.has(randomNumber)) {
+      // randomItems.push({ id: uid(Math.random()), itemValue: randomNumber, color: '#2d8ae2' })
+      randomItems.add(randomNumber)
     }
   }
 
-  return randomItems
+  return Array.from(randomItems)
 }
 
 export const springAnimation = {
