@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, CssBaseline, Typography, Container, Slider, Snackbar, Radio, RadioGroup, FormControlLabel, FormControl, Button, TextField, AppBar, Toolbar} from '@material-ui/core';
+import { Grid, CssBaseline, Typography, Container, Slider, Snackbar, Radio, RadioGroup, FormControlLabel, FormControl, Button, TextField, AppBar, Toolbar } from '@material-ui/core';
 
 import Body from './Body';
 import { uid } from 'react-uid';
@@ -7,14 +7,14 @@ import { generateRandomArray } from '../utility/Util';
 import { getAlgoFunction } from '../utility/Sorting';
 
 const Visualizer = () => {
-	const [ speed, setSpeed ] = useState(1000);
-	const [ numItems, setNumItems ] = useState(5);
-	const [ isSorted, setIsSorted ] = useState(false);
-	const [ algoFunction, setAlgoFunction ] = useState('BubbleSort');
-	const [ inputType, setInputType ] = useState('DefaultInput');
-	const [ process, setProcess ] = useState(false);
-	const [ items, setItems ] = useState(generateRandomArray(numItems));
-	const [ customNumbers, setCustomNumbers ] = useState([]);
+	const [speed, setSpeed] = useState(1000);
+	const [numItems, setNumItems] = useState(5);
+	const [isSorted, setIsSorted] = useState(false);
+	const [algoFunction, setAlgoFunction] = useState('BubbleSort');
+	const [inputType, setInputType] = useState('DefaultInput');
+	const [process, setProcess] = useState(false);
+	const [items, setItems] = useState(generateRandomArray(numItems));
+	const [customNumbers, setCustomNumbers] = useState([]);
 	const minItems = 2;
 	const maxItems = 30;
 
@@ -74,9 +74,8 @@ const Visualizer = () => {
 
 	const checkSwappedElements = (itemsPrev, itemsCurrent) => {
 		let newItems = [];
-		// console.log(items, itemsPrev, itemsCurrent)
+
 		for (let i = 0; i < items.length; i++) {
-			// console.log(itemsPrev[i], itemsCurrent[i])
 			newItems[i] = itemsCurrent[i];
 
 			if (itemsCurrent[i].itemValue !== itemsPrev[i].itemValue) {

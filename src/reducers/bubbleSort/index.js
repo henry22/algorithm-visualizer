@@ -1,4 +1,3 @@
-import createTypography from '@material-ui/core/styles/createTypography'
 import { createAction, handleActions } from 'redux-actions'
 
 const initialState = []
