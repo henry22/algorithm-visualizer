@@ -13,6 +13,10 @@ const mapDispatchToProps = () => dispatch => ({
     dispatch(setArray(array))
     dispatch(setCurrentSorted([]))
   },
+  generateCustomArray: array => {
+    dispatch(setArray(array))
+    dispatch(setCurrentSorted([]))
+  },
   updateAlgorithm: algorithm => {
     dispatch(setAlgorithm(algorithm))
   }

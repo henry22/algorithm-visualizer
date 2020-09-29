@@ -9,7 +9,7 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 2;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, updateAlgorithm, generateArray, isRunning } = props
+  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, updateAlgorithm, generateArray, generateCustomArray, isRunning } = props
   const customRef = useRef(null)
 
   // const numWidth = array.length * 10
@@ -44,8 +44,7 @@ const Body = (props) => {
     for (let i = 0; i < customNumbers.length; i++) {
       customItems.push(customNumbers[i]);
     }
-    console.log('custom items', customItems)
-    generateArray(customItems)
+    generateCustomArray(customItems)
   }
 
   return (
