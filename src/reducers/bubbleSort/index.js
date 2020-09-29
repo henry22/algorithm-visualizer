@@ -6,7 +6,7 @@ const initialState = []
 export const SET_CURRENT_BUBBLE_TWO = 'SET_CURRENT_BUBBLE_TWO'
 export const setCurrentBubbleTwo = createAction(SET_CURRENT_BUBBLE_TWO)
 
-export const bubbleSort = handleActions({
+export const currentBubbleSortTwo = handleActions({
   SET_CURRENT_BUBBLE_TWO: (state, { payload }) => {
     return payload
   }

@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import { array } from './array'
 import { algorithm } from './algorithm'
-import { currentBubbleTwo } from './bubbleSort'
+import { currentBubbleSortTwo } from './bubbleSort'
+import { currentSwapper } from './swapper'
 
 const rootReducer = combineReducers({
   array,
   algorithm,
-  currentBubbleTwo
+  currentBubbleSortTwo,
+  currentSwapper
 })
 
 export default rootReducer
