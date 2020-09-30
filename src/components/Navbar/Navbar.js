@@ -23,9 +23,9 @@ const Navbar = (props) => {
             >
               <FormControlLabel value="BubbleSort" control={<Radio />} label="BubbleSort" onClick={() => handleClick("bubbleSort")} />
               <FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" onClick={() => handleClick('mergeSort')} />
+              <FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" onClick={() => handleClick('quickSort')} />
               {/* <FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
-              <FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
-              <FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
+              <FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" /> */}
             </RadioGroup>
           </FormControl>
         </Grid>

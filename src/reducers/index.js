@@ -7,6 +7,7 @@ import { isRunning } from './running'
 import { isEnding } from './isEnd'
 import { currentBubbleSortTwo } from './bubbleSort'
 import { currentMergeSort } from './mergeSort'
+import { currentQuickSort, pivot } from './quickSort'
 
 const rootReducer = combineReducers({
   array,
@@ -16,7 +17,9 @@ const rootReducer = combineReducers({
   isRunning,
   isEnding,
   currentBubbleSortTwo,
-  currentMergeSort
+  currentMergeSort,
+  currentQuickSort,
+  pivot
 })
 
 export default rootReducer

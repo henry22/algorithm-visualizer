@@ -7,8 +7,9 @@ import { generateRandomArray } from '../../utility/Util'
 import { setRunning } from '../../reducers/running'
 import bubbleSort from '../../algorithms/sorting/bubbleSort'
 import mergeSort from '../../algorithms/sorting/mergeSort'
+import quickSort from '../../algorithms/sorting/quickSort'
 
-const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentSwapper, currentSorted, isRunning, isEnding, algorithm }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentSwapper, currentSorted, isRunning, isEnding, algorithm })
+const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm })
 
 const mapDispatchToProps = () => dispatch => ({
   generateArray: length => {
@@ -29,12 +30,12 @@ const mapDispatchToProps = () => dispatch => ({
       doSort = bubbleSort
     } else if (algorithm === 'mergeSort') {
       doSort = mergeSort
+    } else if (algorithm === 'quickSort') {
+      doSort = quickSort
     } else {
       alert('please select one algorithm')
       return
     }
-
-    console.log('sort array', array)
 
     dispatch(setCurrentSorted([]))
     dispatch(setRunning(true))
