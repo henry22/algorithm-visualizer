@@ -9,7 +9,7 @@ function App() {
 			{/* <Visualizer /> */}
 			<Main />
 		</div>
-	);
+	)
 }
 
 export default App;
