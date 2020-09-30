@@ -5,11 +5,11 @@ import './App.css';
 
 function App() {
   return (
-		<div className="App">
-			{/* <Visualizer /> */}
-			<Main />
-		</div>
-	)
+    <div className="App">
+      {/* <Visualizer /> */}
+      <Main />
+    </div>
+  )
 }
 
 export default App;
