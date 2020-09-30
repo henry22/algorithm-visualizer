@@ -8,7 +8,7 @@ const Body = (props) => {
   const [inputType, setInputType] = useState('DefaultInput');
   const [speed, setSpeed] = useState(1000);
   const [customNumbers, setCustomNumbers] = useState([]);
-  const minItems = 2;
+  const minItems = 4;
   const maxItems = 30;
   const { array, currentBubbleSortTwo, currentMergeSort, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
   const customRef = useRef(null)

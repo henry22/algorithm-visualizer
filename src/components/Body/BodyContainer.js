@@ -34,6 +34,8 @@ const mapDispatchToProps = () => dispatch => ({
       return
     }
 
+    console.log('sort array', array)
+
     dispatch(setCurrentSorted([]))
     dispatch(setRunning(true))
     doSort(array, dispatch, speed)
