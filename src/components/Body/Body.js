@@ -17,7 +17,7 @@ const Body = (props) => {
 
   useEffect(() => {
     generateArray(5)
-  }, [])
+  }, [generateArray])
 
   const handleChange = (e) => {
     generateArray(e.target.value);
