@@ -3,6 +3,7 @@ import { setCurrentBubbleTwo } from '../../reducers/bubbleSort'
 import { setCurrentSwapper } from '../../reducers/swapper'
 import { setCurrentSorted } from '../../reducers/sorted'
 import { setRunning } from '../../reducers/running'
+import { setEnding } from '../../reducers/isEnd'
 
 function bubbleSort(stateArray, dispatch, speed) {
   let array = stateArray.slice(0)
@@ -38,6 +39,7 @@ function handleDispatch(toDispatch, dispatch, array, speed) {
       dispatch(setCurrentBubbleTwo([]))
       dispatch(setCurrentSorted(array.map((num, index) => index)))
       dispatch(setRunning(false))
+      dispatch(setEnding(true))
     }, 1000)
     return
   }

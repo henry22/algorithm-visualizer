@@ -5,6 +5,7 @@ import { currentSwapper } from './swapper'
 import { currentBubbleSortTwo } from './bubbleSort'
 import { currentSorted } from './sorted'
 import { isRunning } from './running'
+import { isEnding } from './isEnd'
 
 const rootReducer = combineReducers({
   array,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   currentSwapper,
   currentBubbleSortTwo,
   currentSorted,
-  isRunning
+  isRunning,
+  isEnding
 })
 
 export default rootReducer

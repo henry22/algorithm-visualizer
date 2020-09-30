@@ -4,8 +4,10 @@ import { setArray } from '../../reducers/array'
 import { setAlgorithm } from '../../reducers/algorithm'
 import { setCurrentSorted } from '../../reducers/sorted'
 import { generateRandomArray } from '../../utility/Util'
+import { setRunning } from '../../reducers/running'
+import bubbleSort from '../../algorithms/sorting/bubbleSort'
 
-const mapStateToProps = ({ array, currentBubbleSortTwo, currentSwapper, currentSorted, isRunning }) => ({ array, currentBubbleSortTwo, currentSwapper, currentSorted, isRunning })
+const mapStateToProps = ({ array, currentBubbleSortTwo, currentSwapper, currentSorted, isRunning, isEnding, algorithm }) => ({ array, currentBubbleSortTwo, currentSwapper, currentSorted, isRunning, isEnding, algorithm })
 
 const mapDispatchToProps = () => dispatch => ({
   generateArray: length => {
@@ -19,6 +21,16 @@ const mapDispatchToProps = () => dispatch => ({
   },
   updateAlgorithm: algorithm => {
     dispatch(setAlgorithm(algorithm))
+  },
+  sort: (algorithm, array, speed) => {
+    let doSort
+    if (algorithm === 'bubbleSort') {
+      doSort = bubbleSort
+    }
+
+    dispatch(setCurrentSorted([]))
+    dispatch(setRunning(true))
+    doSort(array, dispatch, speed)
   }
 });
 

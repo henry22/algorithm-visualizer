@@ -9,25 +9,21 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 2;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning } = props
+  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
   const customRef = useRef(null)
 
   const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
   const cursor = isRunning ? 'auto' : 'pointer'
 
-  // const numWidth = array.length * 10
-  // const width = `${numWidth}px`
-  // const numMargin = 10
-  // const margin = `${numMargin}px`
-  // const color = numWidth > 0 ? 'white' : 'transparent'
-  // const numFont = 20
-  // const fontSize = `${numFont}px`
   useEffect(() => {
     generateArray(5)
+
+    return () => {
+      console.log('component unmount')
+    }
   }, [])
 
   const handleChange = (e) => {
-    console.log('input value', e.target.value)
     generateArray(e.target.value);
   }
 
@@ -51,6 +47,12 @@ const Body = (props) => {
       customItems.push(customNumbers[i]);
     }
     generateCustomArray(customItems)
+  }
+
+  const handleClose = (reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
   }
 
   return (
@@ -78,9 +80,11 @@ const Body = (props) => {
               type="range"
               min={minItems}
               max={maxItems}
+              step="1"
               style={{ background: color, cursor: cursor }}
               disabled={isRunning ? "disabled" : null}
               onChange={handleChange}
+              value={array.length}
             />
             {/* <Slider
               defaultValue={5}
@@ -131,7 +135,7 @@ const Body = (props) => {
 
         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Grid item xs={4}>
-            <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null}>
+            <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null} disabled={isRunning}>
               RESET
             </Button>
           </Grid>
@@ -141,7 +145,7 @@ const Body = (props) => {
               disabled={isRunning}
               variant="contained"
               color="primary"
-            // onClick={() => runAlgorithm()}
+              onClick={!isRunning ? () => sort(algorithm, array, speed) : null}
             >
               Sort!
             </Button>
@@ -171,32 +175,12 @@ const Body = (props) => {
           vertical: 'bottom',
           horizontal: 'left'
         }}
-        // open={isSorted}
+        open={isEnding}
         autoHideDuration={3000}
-        // onClose={handleClose}
+        onClose={handleClose}
         message="Sorting completed!"
       />
     </Container>
-    // <div id="bodyContainer">
-    //   { array.length ? array.map((number, index) => {
-    //     let backgroundColor;
-    //     if (currentSwapper.includes(index)) {
-    //       backgroundColor = "rgba(219, 57, 57, 0.8)"
-    //     } else if (currentBubbleSortTwo.includes(index)) {
-    //       backgroundColor = "rgba(78, 216, 96, 0.8)"
-    //     } else if (currentSorted.includes(index)) {
-    //       backgroundColor = "rgba(169, 92, 232, 0.8)"
-    //     } else {
-    //       backgroundColor = "rgba(66, 134, 244, 0.8)"
-    //     }
-    //     return <div
-    //       className="arrayElement"
-    //       key={index}
-    //       style={{ height: `${number * 3}px`, width: width, marginLeft: margin, marginRigh: margin, backgroundColor: backgroundColor, color: color, fontSize: fontSize }}>
-    //       {number}
-    //     </div>
-    //   }) : null}
-    // </div>
   )
 }
 

@@ -10,7 +10,7 @@ const liStyle = {
   borderRadius: 5,
   listStyle: 'none',
   color: 'white',
-  fontSize: '32px',
+  fontSize: '26px',
   textAlign: 'center',
   alignItems: 'center',
   display: 'grid'
@@ -26,13 +26,13 @@ const Chart = (props) => {
       {array.length ? array.map((number, index) => {
         let backgroundColor;
         if (currentSwapper.includes(index)) {
-          backgroundColor = "rgba(219, 57, 57, 0.8)"
+          backgroundColor = "#DB3939"
         } else if (currentBubbleSortTwo.includes(index)) {
-          backgroundColor = "rgba(78, 216, 96, 0.8)"
+          backgroundColor = "#4ED860"
         } else if (currentSorted.includes(index)) {
-          backgroundColor = "rgba(169, 92, 232, 0.8)"
+          backgroundColor = "#A95CE8"
         } else {
-          backgroundColor = "rgba(66, 134, 244, 0.8)"
+          backgroundColor = "#4286F4"
         }
 
         return (
@@ -49,22 +49,6 @@ const Chart = (props) => {
           </motion.div>
         )
       }) : null}
-      {/* {
-        array.map((item, index) =>
-          <motion.div
-            key={index}
-            animate={{ scale: [1, 1.2, 1] }}
-            layoutTransition={springAnimation}
-            style={{
-              ...liStyle,
-              background: "#2d8ae2",
-              width: liWidth,
-              height: liHeight * (item + 10),
-            }}>
-            <h6 style={{ margin: 0 }}>{item}</h6>
-          </motion.div>
-        )
-      } */}
     </div>
   )
 }
