@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Chart from '../Chart/Chart'
 import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button } from '@material-ui/core'
 import './Body.css'
@@ -9,7 +9,7 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 2;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, updateAlgorithm, generateArray, generateCustomArray, isRunning } = props
+  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning } = props
   const customRef = useRef(null)
 
   // const numWidth = array.length * 10
@@ -19,9 +19,11 @@ const Body = (props) => {
   // const color = numWidth > 0 ? 'white' : 'transparent'
   // const numFont = 20
   // const fontSize = `${numFont}px`
+  useEffect(() => {
+    generateArray(5)
+  }, [])
 
   const handleChange = (newNum) => {
-    console.log('new num', newNum)
     generateArray(newNum);
   }
 
@@ -63,8 +65,9 @@ const Body = (props) => {
         {inputType === 'DefaultInput' && (
           <Grid item xs={12}>
             <Slider
+              defaultValue={5}
               value={array.length}
-              onChange={(e, newValue) => handleChange(newValue)}
+              onChange={(e, newNum) => handleChange(newNum)}
               aria-labelledby="input-slider"
               valueLabelDisplay="auto"
               min={minItems}
@@ -110,9 +113,9 @@ const Body = (props) => {
 
         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Grid item xs={4}>
-            {/* <Button color="secondary" variant="contained" onClick={resetNumbers}>
+            <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null}>
               RESET
-            </Button> */}
+            </Button>
           </Grid>
 
           <Grid item xs={4}>

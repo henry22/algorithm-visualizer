@@ -17,6 +17,6 @@ export function generateRandomArray(length) {
 
 export const springAnimation = {
   type: "spring",
-  damping: 20,
+  damping: 50,
   stiffness: 300
 }

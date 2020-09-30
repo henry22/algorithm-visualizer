@@ -9,11 +9,6 @@ const Navbar = (props) => {
   const cursor = isRunning ? 'auto' : 'pointer'
   const changeSize = useRef(null)
 
-  useEffect(() => {
-    generateArray(5)
-    // changeSize.current.value = 5
-  }, [generateArray])
-
   const handleClick = (algorithm) => {
     updateAlgorithm(algorithm)
   }
