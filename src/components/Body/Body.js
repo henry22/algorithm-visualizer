@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Chart from '../Chart/Chart'
 import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button } from '@material-ui/core'
 import './Body.css'
@@ -9,19 +9,18 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 2;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, updateAlgorithm, generateArray, generateCustomArray, isRunning } = props
+  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
   const customRef = useRef(null)
 
-  // const numWidth = array.length * 10
-  // const width = `${numWidth}px`
-  // const numMargin = 10
-  // const margin = `${numMargin}px`
-  // const color = numWidth > 0 ? 'white' : 'transparent'
-  // const numFont = 20
-  // const fontSize = `${numFont}px`
+  const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
+  const cursor = isRunning ? 'auto' : 'pointer'
 
-  const handleChange = (newNum) => {
-    generateArray(newNum);
+  useEffect(() => {
+    generateArray(5)
+  }, [generateArray])
+
+  const handleChange = (e) => {
+    generateArray(e.target.value);
   }
 
   const changeSpeed = (e) => {
@@ -46,6 +45,12 @@ const Body = (props) => {
     generateCustomArray(customItems)
   }
 
+  const handleClose = (reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+  }
+
   return (
     <Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
       <Grid container style={{
@@ -61,14 +66,31 @@ const Body = (props) => {
 
         {inputType === 'DefaultInput' && (
           <Grid item xs={12}>
-            <Slider
+            <div
+              id="arraySize"
+              style={{ color: color }}>
+              Change Array Size
+            </div>
+            <input
+              id="changeSize"
+              type="range"
+              min={minItems}
+              max={maxItems}
+              step="1"
+              style={{ background: color, cursor: cursor }}
+              disabled={isRunning ? "disabled" : null}
+              onChange={handleChange}
               value={array.length}
-              onChange={(e, newValue) => handleChange(newValue)}
+            />
+            {/* <Slider
+              defaultValue={5}
+              value={array.length}
+              onChange={(e, newNum) => handleChange(newNum)}
               aria-labelledby="input-slider"
               valueLabelDisplay="auto"
               min={minItems}
               max={maxItems}
-            />
+            /> */}
           </Grid>
         )}
 
@@ -109,9 +131,9 @@ const Body = (props) => {
 
         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Grid item xs={4}>
-            {/* <Button color="secondary" variant="contained" onClick={resetNumbers}>
+            <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null} disabled={isRunning}>
               RESET
-            </Button> */}
+            </Button>
           </Grid>
 
           <Grid item xs={4}>
@@ -119,7 +141,7 @@ const Body = (props) => {
               disabled={isRunning}
               variant="contained"
               color="primary"
-            // onClick={() => runAlgorithm()}
+              onClick={!isRunning ? () => sort(algorithm, array, speed) : null}
             >
               Sort!
             </Button>
@@ -149,32 +171,12 @@ const Body = (props) => {
           vertical: 'bottom',
           horizontal: 'left'
         }}
-        // open={isSorted}
+        open={isEnding}
         autoHideDuration={3000}
-        // onClose={handleClose}
+        onClose={handleClose}
         message="Sorting completed!"
       />
     </Container>
-    // <div id="bodyContainer">
-    //   { array.length ? array.map((number, index) => {
-    //     let backgroundColor;
-    //     if (currentSwapper.includes(index)) {
-    //       backgroundColor = "rgba(219, 57, 57, 0.8)"
-    //     } else if (currentBubbleSortTwo.includes(index)) {
-    //       backgroundColor = "rgba(78, 216, 96, 0.8)"
-    //     } else if (currentSorted.includes(index)) {
-    //       backgroundColor = "rgba(169, 92, 232, 0.8)"
-    //     } else {
-    //       backgroundColor = "rgba(66, 134, 244, 0.8)"
-    //     }
-    //     return <div
-    //       className="arrayElement"
-    //       key={index}
-    //       style={{ height: `${number * 3}px`, width: width, marginLeft: margin, marginRigh: margin, backgroundColor: backgroundColor, color: color, fontSize: fontSize }}>
-    //       {number}
-    //     </div>
-    //   }) : null}
-    // </div>
   )
 }
 

@@ -38,10 +38,17 @@ const Visualizer = () => {
     for (let i = 0; i < customNumbers.length; i++) {
       const value = customNumbers[i];
       customItems.push({
+<<<<<<< HEAD
         id: uid(Math.random()),
         itemValue: Number(value),
         color: '#2d8ae2',
         IsBeingSwapped: false
+=======
+	id: uid(Math.random()),
+	itemValue: Number(value),
+	color: '#2d8ae2',
+	IsBeingSwapped: false
+>>>>>>> 45d944f62e0e31e3bc17449c69d7d2f247dd17be
       });
     }
     setItems(customItems);
@@ -74,6 +81,7 @@ const Visualizer = () => {
 
   const checkSwappedElements = (itemsPrev, itemsCurrent) => {
     let newItems = [];
+<<<<<<< HEAD
     // console.log(items, itemsPrev, itemsCurrent)
     for (let i = 0; i < items.length; i++) {
       // console.log(itemsPrev[i], itemsCurrent[i])
@@ -81,6 +89,14 @@ const Visualizer = () => {
 
       if (itemsCurrent[i].itemValue !== itemsPrev[i].itemValue) {
         newItems[i].IsBeingSwapped = true;
+=======
+
+    for (let i = 0; i < items.length; i++) {
+      newItems[i] = itemsCurrent[i];
+
+      if (itemsCurrent[i].itemValue !== itemsPrev[i].itemValue) {
+	newItems[i].IsBeingSwapped = true;
+>>>>>>> 45d944f62e0e31e3bc17449c69d7d2f247dd17be
       }
     }
     return newItems;
@@ -134,12 +150,12 @@ const Visualizer = () => {
                 <FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
                 <FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
                 {/* <FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" />
-              <FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
+                <FormControlLabel value="QuickSort" control={<Radio />} label="QuickSort" /> */}
               </RadioGroup>
             </FormControl>
           </Grid>
         </Toolbar>
-      </AppBar>
+      </AppBar >
       <Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
         <Grid container style={{
           maxHeight: '500px'
@@ -194,7 +210,7 @@ const Visualizer = () => {
               <Grid item xs={2}>
                 <Button disabled={process} variant="contained" color="primary" onClick={() => submit()}>
                   Done!
-								</Button>
+	       </Button>
               </Grid>
             </Grid>
           )}
@@ -203,7 +219,7 @@ const Visualizer = () => {
             <Grid item xs={4}>
               <Button color="secondary" variant="contained" onClick={resetNumbers}>
                 RESET
-							</Button>
+	       </Button>
             </Grid>
 
             <Grid item xs={4}>
@@ -214,7 +230,7 @@ const Visualizer = () => {
                 onClick={() => runAlgorithm()}
               >
                 Sort!
-							</Button>
+	      </Button>
             </Grid>
 
             <Grid item xs={4}>
@@ -247,7 +263,7 @@ const Visualizer = () => {
           message="Sorting completed!"
         />
       </Container>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 
