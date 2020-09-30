@@ -12,6 +12,9 @@ const Body = (props) => {
   const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning } = props
   const customRef = useRef(null)
 
+  const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
+  const cursor = isRunning ? 'auto' : 'pointer'
+
   // const numWidth = array.length * 10
   // const width = `${numWidth}px`
   // const numMargin = 10
@@ -23,8 +26,9 @@ const Body = (props) => {
     generateArray(5)
   }, [])
 
-  const handleChange = (newNum) => {
-    generateArray(newNum);
+  const handleChange = (e) => {
+    console.log('input value', e.target.value)
+    generateArray(e.target.value);
   }
 
   const changeSpeed = (e) => {
@@ -64,7 +68,21 @@ const Body = (props) => {
 
         {inputType === 'DefaultInput' && (
           <Grid item xs={12}>
-            <Slider
+            <div
+              id="arraySize"
+              style={{ color: color }}>
+              Change Array Size
+            </div>
+            <input
+              id="changeSize"
+              type="range"
+              min={minItems}
+              max={maxItems}
+              style={{ background: color, cursor: cursor }}
+              disabled={isRunning ? "disabled" : null}
+              onChange={handleChange}
+            />
+            {/* <Slider
               defaultValue={5}
               value={array.length}
               onChange={(e, newNum) => handleChange(newNum)}
@@ -72,7 +90,7 @@ const Body = (props) => {
               valueLabelDisplay="auto"
               min={minItems}
               max={maxItems}
-            />
+            /> */}
           </Grid>
         )}
 

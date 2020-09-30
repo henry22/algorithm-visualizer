@@ -5,8 +5,6 @@ import { AppBar, Toolbar, FormControl, FormControlLabel, RadioGroup, Radio, Typo
 const Navbar = (props) => {
   const { array, algorithm, updateAlgorithm, generateArray, sort, isRunning } = props
   const speed = 570 - Math.pow(array.length, 2) > 0 ? 570 - Math.pow(array.length, 2) : 0
-  const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "white"
-  const cursor = isRunning ? 'auto' : 'pointer'
   const changeSize = useRef(null)
 
   const handleClick = (algorithm) => {
