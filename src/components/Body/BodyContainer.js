@@ -26,6 +26,9 @@ const mapDispatchToProps = () => dispatch => ({
     let doSort
     if (algorithm === 'bubbleSort') {
       doSort = bubbleSort
+    } else {
+      alert('please select one algorithm')
+      return
     }
 
     dispatch(setCurrentSorted([]))

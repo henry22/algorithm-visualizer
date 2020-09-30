@@ -17,10 +17,6 @@ const Body = (props) => {
 
   useEffect(() => {
     generateArray(5)
-
-    return () => {
-      console.log('component unmount')
-    }
   }, [])
 
   const handleChange = (e) => {
