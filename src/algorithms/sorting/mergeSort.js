@@ -3,12 +3,13 @@ import { setCurrentMerge } from '../../reducers/mergeSort'
 import { setCurrentSwapper } from '../../reducers/swapper'
 import { setRunning } from '../../reducers/running'
 import { setEnding } from '../../reducers/isEnd'
-import { FitnessCenter } from '@material-ui/icons'
+import { setCurrentSorted } from '../../reducers/sorted'
 
 function mergeSort(stateArray, dispatch, speed) {
   let array = stateArray.slice(0)
   let toDispatch = []
   let finalArray = mergeSortHelper(array.map((num, index) => [num, index]), toDispatch, 0, array.length - 1, { array: array.slice(0) })
+  handleDispatch(toDispatch, dispatch, finalArray, speed)
 }
 
 function mergeSortHelper(array, toDispatch, start, end, obj) {
@@ -26,7 +27,7 @@ function mergeSortHelper(array, toDispatch, start, end, obj) {
     isFinalMerge = true
   }
 
-  return actualSort(first, second, toDispatch, obj, start, end, isFinalMerge)
+  return actualSort(actualFirst, actualSecond, toDispatch, obj, start, end, isFinalMerge)
 }
 
 function actualSort(first, second, toDispatch, obj, start, end, isFinalMerge) {
@@ -48,6 +49,55 @@ function actualSort(first, second, toDispatch, obj, start, end, isFinalMerge) {
       } else {
         obj.array = obj.array.slice(0, start).concat(sortedArray.map(subArr => subArr[0])).concat(first.map(subArr => subArr[0])).concat(second.map(subArr => subArr[0])).concat(obj.array.slice(end + 1))
       }
+      toDispatch.push(obj.array.concat([indexToPush - 1, indexToPush]))
+      toDispatch.push([])
+    }
+    if (isFinalMerge) {
+      toDispatch.push([true, indexToPush - 1])
     }
   }
+
+  return sortedArray.concat(first).concat(second)
 }
+
+function handleDispatch(toDispatch, dispatch, array, speed) {
+  if (!toDispatch.length) {
+    dispatch(setCurrentMerge(array.map((num, index) => index)))
+    setTimeout(() => {
+      dispatch(setCurrentMerge([]))
+      dispatch(setCurrentSorted(array.map((num, index) => index)))
+      dispatch(setRunning(false))
+      dispatch(setEnding(true))
+    }, 1000)
+    return
+  }
+
+  let dispatchFunction
+
+  if (toDispatch[0].length > 3) {
+    dispatchFunction = setArray
+  } else if (toDispatch[0].length === 3 && typeof toDispatch[0][2] === 'boolean' || toDispatch[0].length === 0) {
+    dispatchFunction = setCurrentSwapper
+  } else if (toDispatch[0].length === 2 && typeof toDispatch[0][0] === 'boolean') {
+    dispatchFunction = setCurrentSorted
+  } else {
+    dispatchFunction = setCurrentMerge
+  }
+
+  if (dispatchFunction === setArray) {
+    let currentToDispatch = toDispatch.shift()
+    dispatch(dispatchFunction(currentToDispatch.slice(0, currentToDispatch.length - 2)))
+    dispatch(setCurrentSwapper([]))
+    dispatch(setCurrentMerge([]))
+    dispatch(setCurrentSwapper([currentToDispatch[currentToDispatch.length - 2], currentToDispatch[currentToDispatch.length - 1]]))
+    dispatch(setCurrentMerge([currentToDispatch[currentToDispatch.length - 2], currentToDispatch[currentToDispatch.length - 1]]))
+  } else {
+    dispatch(dispatchFunction(toDispatch.shift()))
+  }
+
+  setTimeout(() => {
+    handleDispatch(toDispatch, dispatch, array, speed)
+  }, speed)
+}
+
+export default mergeSort

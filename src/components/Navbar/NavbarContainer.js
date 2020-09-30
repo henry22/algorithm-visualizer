@@ -5,7 +5,7 @@ import { setAlgorithm } from '../../reducers/algorithm'
 import { setCurrentSorted } from '../../reducers/sorted'
 import { generateRandomArray } from '../../utility/Util'
 
-const mapStateToProps = ({ array, algorithm, isRunning }) => ({ array, algorithm, isRunning })
+const mapStateToProps = ({ algorithm }) => ({ algorithm })
 const mapDispatchToProps = () => dispatch => ({
   generateArray: length => {
     const array = generateRandomArray(length)

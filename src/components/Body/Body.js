@@ -9,7 +9,7 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 2;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
+  const { array, currentBubbleSortTwo, currentMergeSort, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
   const customRef = useRef(null)
 
   const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
@@ -162,7 +162,7 @@ const Body = (props) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentSorted={currentSorted} />
+          <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentMergeSort={currentMergeSort} currentSorted={currentSorted} />
         </Grid>
       </Grid>
 

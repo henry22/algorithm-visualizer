@@ -17,7 +17,7 @@ const liStyle = {
 }
 
 const Chart = (props) => {
-  const { array, currentSwapper, currentBubbleSortTwo, currentSorted } = props
+  const { array, currentSwapper, currentBubbleSortTwo, currentMergeSort, currentSorted } = props
   let liHeight = Math.floor((window.innerHeight / 2) / 100);
   let liWidth = 32;
 
@@ -27,7 +27,7 @@ const Chart = (props) => {
         let backgroundColor;
         if (currentSwapper.includes(index)) {
           backgroundColor = "#DB3939"
-        } else if (currentBubbleSortTwo.includes(index)) {
+        } else if (currentBubbleSortTwo.includes(index) || currentMergeSort.includes(index)) {
           backgroundColor = "#4ED860"
         } else if (currentSorted.includes(index)) {
           backgroundColor = "#A95CE8"
