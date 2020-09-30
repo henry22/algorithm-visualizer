@@ -21,7 +21,6 @@ const Body = (props) => {
   // const fontSize = `${numFont}px`
 
   const handleChange = (newNum) => {
-    console.log('new num', newNum)
     generateArray(newNum);
   }
 
