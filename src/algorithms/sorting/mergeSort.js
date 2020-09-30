@@ -76,7 +76,7 @@ function handleDispatch(toDispatch, dispatch, array, speed) {
 
   if (toDispatch[0].length > 3) {
     dispatchFunction = setArray
-  } else if (toDispatch[0].length === 3 && typeof toDispatch[0][2] === 'boolean' || toDispatch[0].length === 0) {
+  } else if ((toDispatch[0].length === 3 && typeof toDispatch[0][2] === 'boolean') || toDispatch[0].length === 0) {
     dispatchFunction = setCurrentSwapper
   } else if (toDispatch[0].length === 2 && typeof toDispatch[0][0] === 'boolean') {
     dispatchFunction = setCurrentSorted

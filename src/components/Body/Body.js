@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Chart from '../Chart/Chart'
-import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button } from '@material-ui/core'
+import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton } from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close'
 import './Body.css'
 
 const Body = (props) => {
@@ -45,7 +46,7 @@ const Body = (props) => {
     generateCustomArray(customItems)
   }
 
-  const handleClose = (reason) => {
+  const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -172,9 +173,16 @@ const Body = (props) => {
           horizontal: 'left'
         }}
         open={isEnding}
-        autoHideDuration={3000}
+        autoHideDuration={2000}
         onClose={handleClose}
         message="Sorting completed!"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
       />
     </Container>
   )

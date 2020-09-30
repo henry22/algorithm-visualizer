@@ -21,7 +21,7 @@ const Navbar = (props) => {
               aria-label="algorithm"
               name="algorithm"
             >
-              <FormControlLabel value="BubbleSort" control={<Radio />} label="BubbleSort" onClick={() => handleClick("bubbleSort")} checked={algorithm === 'bubbleSort'} />
+              <FormControlLabel value="BubbleSort" control={<Radio />} label="BubbleSort" onClick={() => handleClick("bubbleSort")} />
               <FormControlLabel value="MergeSort" control={<Radio />} label="MergeSort" onClick={() => handleClick('mergeSort')} />
               {/* <FormControlLabel value="InsertionSort" control={<Radio />} label="InsertionSort" />
               <FormControlLabel value="SelectionSort" control={<Radio />} label="SelectionSort" />
