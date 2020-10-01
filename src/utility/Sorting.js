@@ -8,10 +8,10 @@ export function bubbleSort(items) {
 
     for (let i = 0; i < resultItems.length - 1; i++) {
       if (resultItems[i].itemValue > resultItems[i + 1].itemValue) {
-	[resultItems[i], resultItems[i + 1]] = [resultItems[i + 1], resultItems[i]];
-	isSorted = false;
+        [resultItems[i], resultItems[i + 1]] = [resultItems[i + 1], resultItems[i]];
+        isSorted = false;
 
-	results.push(JSON.parse(JSON.stringify(resultItems)));
+        results.push(JSON.parse(JSON.stringify(resultItems)));
       }
     }
   }
@@ -47,14 +47,14 @@ export function selectionSort(items) {
 
     for (let i = current_index + 1; i < resultItems.length; i++) {
       if (resultItems[i].itemValue < min_val) {
-	min_val = resultItems[i].itemValue;
-	min_idx = i;
+        min_val = resultItems[i].itemValue;
+        min_idx = i;
       }
     }
 
     [resultItems[current_index], resultItems[min_idx]] = [resultItems[min_idx], resultItems[current_index]];
-      current_index += 1;
-      results.push(JSON.parse(JSON.stringify(resultItems)));
+    current_index += 1;
+    results.push(JSON.parse(JSON.stringify(resultItems)));
   }
 
   results.push(JSON.parse(JSON.stringify(resultItems)));
@@ -80,16 +80,16 @@ export function mergeSort(items) {
 
   function merge(left, right) {
     let resultArray = [],
-	leftIndex = 0,
-	rightIndex = 0;
+      leftIndex = 0,
+      rightIndex = 0;
 
     while (leftIndex < left.length && rightIndex < right.length) {
       if (left[leftIndex].itemValue < right[rightIndex].itemValue) {
-	resultArray.push(left[leftIndex]);
-	leftIndex++;
+        resultArray.push(left[leftIndex]);
+        leftIndex++;
       } else {
-	resultArray.push(right[rightIndex]);
-	rightIndex++;
+        resultArray.push(right[rightIndex]);
+        rightIndex++;
       }
     }
 
