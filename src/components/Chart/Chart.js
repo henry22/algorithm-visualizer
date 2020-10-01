@@ -22,7 +22,7 @@ const Chart = (props) => {
   let liWidth = 32;
 
   return (
-    <div style={{ display: 'inline-flex', justifyItems: 'center', alignItems: 'flex-end' }}>
+    <div style={{ display: 'inline-flex', justifyItems: 'center', alignItems: 'flex-end', height: '350px' }}>
       {array.length ? array.map((number, index) => {
         let backgroundColor;
         if (currentSwapper.includes(index)) {
@@ -40,6 +40,7 @@ const Chart = (props) => {
         return (
           <motion.div
             key={index}
+            animate={{ scale: [1, 1.1, 1] }}
             layoutTransition={springAnimation}
             style={{
               ...liStyle,

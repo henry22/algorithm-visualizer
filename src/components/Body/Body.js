@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Chart from '../Chart/Chart'
 import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
+import { debounce } from 'lodash'
 import './Body.css'
 
 const Body = (props) => {
@@ -20,8 +21,12 @@ const Body = (props) => {
     generateArray(5)
   }, [generateArray])
 
+  const delayHandleChange = useCallback(debounce((newValue) => {
+    generateArray(newValue)
+  }, 16), [])
+
   const handleChange = (e) => {
-    generateArray(e.target.value);
+    delayHandleChange(e.target.value)
   }
 
   const changeSpeed = (e) => {
@@ -65,13 +70,11 @@ const Body = (props) => {
 
         {inputType === 'DefaultInput' && (
           <Grid item xs={12}>
-            <div
-              id="arraySize"
+            <span
               style={{ color: color }}>
-              Change Array Size
-            </div>
+              Change items Size
+            </span>
             <input
-              id="changeSize"
               type="range"
               min={minItems}
               max={maxItems}
