@@ -112,7 +112,7 @@ const Body = (props) => {
               <span
                 style={{ color: color }}>
                 Change items size
-            </span>
+              </span>
               <input
                 type="range"
                 min={minItems}
