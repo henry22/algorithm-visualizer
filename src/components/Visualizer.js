@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, CssBaseline, Typography, Container, Slider, Snackbar, Radio, RadioGroup, FormControlLabel, FormControl, Button, TextField, AppBar, Toolbar } from '@material-ui/core';
 
-import Body from './Body';
 import { uid } from 'react-uid';
 import { generateRandomArray } from '../utility/Util';
 import { getAlgoFunction } from '../utility/Sorting';
@@ -140,7 +139,7 @@ const Visualizer = () => {
           </Grid>
         </Toolbar>
       </AppBar >
-      <Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
+      <Container fixed style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
         <Grid container style={{
           maxHeight: '500px'
         }}>
@@ -199,14 +198,14 @@ const Visualizer = () => {
             </Grid>
           )}
 
-          <Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Grid item xs={4}>
+          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Grid item xs={2}>
               <Button color="secondary" variant="contained" onClick={resetNumbers}>
                 RESET
               </Button>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={2}>
               <Button
                 disabled={process}
                 variant="contained"
@@ -217,7 +216,7 @@ const Visualizer = () => {
               </Button>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={2}>
               <TextField
                 id="standard-number"
                 label="Speed (ms)"
@@ -229,10 +228,6 @@ const Visualizer = () => {
                 onChange={changeSpeed}
               />
             </Grid>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Body items={items} />
           </Grid>
         </Grid>
 

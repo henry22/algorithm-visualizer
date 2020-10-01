@@ -96,7 +96,7 @@ const Body = (props) => {
         </Alert>
       </Collapse>
       <Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-        <Grid container style={{
+        <Grid container justify="center" style={{
           maxHeight: '500px'
         }}>
           {inputType === 'DefaultInput' && (
@@ -161,14 +161,14 @@ const Body = (props) => {
             </Grid>
           )}
 
-          <Grid item xs={12} style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Grid item xs={4}>
+          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Grid item xs={2}>
               <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null} disabled={isRunning}>
                 RESET
-            </Button>
+              </Button>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={2}>
               <Button
                 disabled={isRunning}
                 variant="contained"
@@ -176,10 +176,10 @@ const Body = (props) => {
                 onClick={algorithm ? () => sort(algorithm, array, speed) : setAlert}
               >
                 Sort!
-            </Button>
+              </Button>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={2}>
               <TextField
                 id="standard-number"
                 label="Speed (ms)"
