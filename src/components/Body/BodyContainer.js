@@ -34,7 +34,6 @@ const mapDispatchToProps = () => dispatch => ({
     } else if (algorithm === 'quickSort') {
       doSort = quickSort
     } else {
-      alert('please select one algorithm')
       return
     }
 
