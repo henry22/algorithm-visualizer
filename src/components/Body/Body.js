@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Chart from '../Chart/Chart'
-import { Container, Grid, Slider, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton } from '@material-ui/core'
+import { Container, Grid, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import { debounce } from 'lodash'
-import './Body.css'
 
 const Body = (props) => {
   const [inputType, setInputType] = useState('DefaultInput');
@@ -72,7 +71,7 @@ const Body = (props) => {
           <Grid item xs={12}>
             <span
               style={{ color: color }}>
-              Change items Size
+              Change items size
             </span>
             <input
               type="range"
@@ -84,15 +83,6 @@ const Body = (props) => {
               onChange={handleChange}
               value={array.length}
             />
-            {/* <Slider
-              defaultValue={5}
-              value={array.length}
-              onChange={(e, newNum) => handleChange(newNum)}
-              aria-labelledby="input-slider"
-              valueLabelDisplay="auto"
-              min={minItems}
-              max={maxItems}
-            /> */}
           </Grid>
         )}
 
