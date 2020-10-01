@@ -22,7 +22,7 @@ const Chart = (props) => {
   let liWidth = 32;
 
   return (
-    <div style={{ display: 'inline-flex', justifyItems: 'center', alignItems: 'flex-end', height: '350px' }}>
+    <div style={{ display: 'inline-flex', justifyItems: 'center', alignItems: 'flex-end', height: 'auto' }}>
       {array.length ? array.map((number, index) => {
         let backgroundColor;
         if (currentSwapper.includes(index)) {
