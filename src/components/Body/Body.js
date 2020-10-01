@@ -10,7 +10,7 @@ const Body = (props) => {
   const [customNumbers, setCustomNumbers] = useState([]);
   const minItems = 4;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm } = props
+  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm, close } = props
   const customRef = useRef(null)
 
   const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
@@ -46,10 +46,8 @@ const Body = (props) => {
     generateCustomArray(customItems)
   }
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+  const handleClose = () => {
+    close()
   }
 
   return (
@@ -173,7 +171,7 @@ const Body = (props) => {
           horizontal: 'left'
         }}
         open={isEnding}
-        autoHideDuration={2000}
+        autoHideDuration={3000}
         onClose={handleClose}
         message="Sorting completed!"
         action={

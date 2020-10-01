@@ -5,6 +5,7 @@ import { setAlgorithm } from '../../reducers/algorithm'
 import { setCurrentSorted } from '../../reducers/sorted'
 import { generateRandomArray } from '../../utility/Util'
 import { setRunning } from '../../reducers/running'
+import { setEnding } from '../../reducers/isEnd'
 import bubbleSort from '../../algorithms/sorting/bubbleSort'
 import mergeSort from '../../algorithms/sorting/mergeSort'
 import quickSort from '../../algorithms/sorting/quickSort'
@@ -40,6 +41,9 @@ const mapDispatchToProps = () => dispatch => ({
     dispatch(setCurrentSorted([]))
     dispatch(setRunning(true))
     doSort(array, dispatch, speed)
+  },
+  close: () => {
+    dispatch(setEnding(false))
   }
 });
 
