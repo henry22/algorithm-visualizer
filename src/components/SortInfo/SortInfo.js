@@ -29,8 +29,8 @@ const SortInfo = (props) => {
                     Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
                       </td>
                   <td>
-                    Space Complexity: <code>O(n)</code><br />
-                        Time Complexity: <code>O(n^2)</code>
+                    Space Complexity: <code>O(1)</code><br />
+                    Time Complexity: <code>O(n^2)</code>
                   </td>
                 </tr>
               </tbody>

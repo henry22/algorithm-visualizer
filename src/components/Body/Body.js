@@ -29,7 +29,7 @@ const Body = (props) => {
 
   const delayHandleChange = useCallback(debounce((newValue) => {
     generateArray(newValue)
-  }, 16), [])
+  }, 50), [])
 
   const handleChange = (e) => {
     delayHandleChange(e.target.value)
@@ -178,8 +178,8 @@ const Body = (props) => {
                 value={inputType}
                 onChange={changeHandler}
               >
-                <FormControlLabel value="CustomInput" control={<Radio />} label="Custom Input" />
-                <FormControlLabel value="DefaultInput" control={<Radio />} label="Default Input" />
+                <FormControlLabel value="CustomInput" control={<Radio />} label="Custom Input" disabled={isRunning} />
+                <FormControlLabel value="DefaultInput" control={<Radio />} label="Default Input" disabled={isRunning} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -223,7 +223,6 @@ const Body = (props) => {
 
             <Grid item xs={2}>
               <TextField
-                id="standard-number"
                 label="Speed (ms)"
                 type="number"
                 InputLabelProps={{
@@ -231,6 +230,7 @@ const Body = (props) => {
                 }}
                 value={speed}
                 onChange={changeSpeed}
+                disabled={isRunning}
               />
             </Grid>
           </Grid>
