@@ -235,7 +235,7 @@ const Body = (props) => {
             </Grid>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ position: 'relative', height: '50vh' }}>
             <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentMergeSort={currentMergeSort} currentSorted={currentSorted} currentQuickSort={currentQuickSort} pivot={pivot} />
           </Grid>
 

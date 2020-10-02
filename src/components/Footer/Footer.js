@@ -17,7 +17,7 @@ const ColorKeyBox = styled.span`
 
 const Footer = () => {
   return (
-    <Grid container justify="center" style={{ marginTop: '10px' }}>
+    <Grid container justify="center">
       <ColorKeyItem>
         <ColorKeyBox style={{ backgroundColor: '#4286F4' }}></ColorKeyBox>
         <span>Unsorted</span>
