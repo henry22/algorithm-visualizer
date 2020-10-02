@@ -73,7 +73,7 @@ const Body = (props) => {
 
   return (
     <>
-      <Collapse in={open.isOpen} style={{ position: 'relative', top: '64px', }}>
+      <Collapse in={open.isOpen} style={{ position: 'absolute', top: '64px', width: '100%' }}>
         <Alert
           severity="info"
           action={
@@ -159,7 +159,7 @@ const Body = (props) => {
             </Grid>
           )}
 
-          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Grid item xs={2}>
               <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null} disabled={isRunning}>
                 RESET
