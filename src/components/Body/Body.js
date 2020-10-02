@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Chart from '../Chart/Chart'
+import Footer from '../Footer/Footer'
 import { Container, Grid, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton, Collapse } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close'
@@ -194,6 +195,8 @@ const Body = (props) => {
           <Grid item xs={12}>
             <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentMergeSort={currentMergeSort} currentSorted={currentSorted} currentQuickSort={currentQuickSort} pivot={pivot} />
           </Grid>
+
+          <Footer />
         </Grid>
 
         <Snackbar
