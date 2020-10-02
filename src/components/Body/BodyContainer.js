@@ -43,6 +43,12 @@ const mapDispatchToProps = () => dispatch => ({
   },
   close: () => {
     dispatch(setEnding(false))
+  },
+  startRunning: () => {
+    dispatch(setRunning(false))
+  },
+  stopRunning: () => {
+    dispatch(setRunning(true))
   }
 });
 

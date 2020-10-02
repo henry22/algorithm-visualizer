@@ -17,7 +17,7 @@ const Body = (props) => {
   })
   const minItems = 4;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm, close } = props
+  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm, close, stopRunning, startRunning } = props
   const customRef = useRef(null)
 
   const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
@@ -49,8 +49,38 @@ const Body = (props) => {
   }
 
   const customInput = (e) => {
-    let input = e.target.value.split(' ').map((number) => parseInt(number, 10));
-    setCustomNumbers(input);
+    let input = e.target.value
+
+    if (input === '') {
+      startRunning()
+      setCustomNumbers([])
+    }
+
+    const customInput = input.trim().split(' ').map((value) => {
+      const number = parseInt(value, 10)
+      if (isNaN(number)) {
+        setOpen({
+          ...open,
+          isOpen: true,
+          text: 'Input should be a number'
+        })
+        stopRunning()
+      }
+      return number
+    })
+
+    if (customInput.length < 4) {
+      setOpen({
+        ...open,
+        isOpen: true,
+        text: 'Input should have at least 4 numbers'
+      })
+      stopRunning()
+    } else {
+      startRunning()
+    }
+
+    setCustomNumbers(customInput);
   }
 
   const submit = () => {
@@ -59,6 +89,19 @@ const Body = (props) => {
       customItems.push(customNumbers[i]);
     }
     generateCustomArray(customItems)
+  }
+
+  const changeHandler = (e) => {
+    switch (e.target.value) {
+      case 'DefaultInput':
+        setInputType('DefaultInput')
+        generateArray(5)
+        startRunning()
+        break
+      default:
+        setInputType(e.target.value)
+        break
+    }
   }
 
   const handleClose = () => {
@@ -133,7 +176,7 @@ const Body = (props) => {
                 aria-label="input-type"
                 name="input-type"
                 value={inputType}
-                onChange={(e) => setInputType(e.target.value)}
+                onChange={changeHandler}
               >
                 <FormControlLabel value="CustomInput" control={<Radio />} label="Custom Input" />
                 <FormControlLabel value="DefaultInput" control={<Radio />} label="Default Input" />
@@ -142,9 +185,8 @@ const Body = (props) => {
           </Grid>
           {inputType === 'CustomInput' && (
             <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-              <Grid item xs={10}>
+              <Grid item xs={6}>
                 <TextField
-                  id="custom_input"
                   type="text"
                   placeholder="Insert space separated numbers. ex: 23 7 12 90"
                   style={{ width: '100%', marginBottom: '20px' }}
@@ -164,7 +206,7 @@ const Body = (props) => {
           <Grid item xs={6} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Grid item xs={2}>
               <Button color="secondary" variant="contained" onClick={!isRunning ? () => generateArray(array.length) : null} disabled={isRunning}>
-                RESET
+                Regenerate
               </Button>
             </Grid>
 
