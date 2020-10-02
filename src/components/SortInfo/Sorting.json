@@ -1,0 +1,20 @@
+{
+	"bubbleSort": {
+		"title": "Bubble Sort",
+		"description": "Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "O(n^2)"
+	},
+	"mergeSort": {
+		"title": "Merge Sort",
+		"description": "Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows: Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted). Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.",
+		"spaceComplexity": "O(n)",
+		"timeComplexity": "O(nlog(n))"
+	},
+	"quickSort": {
+		"title": "Quick Sort",
+		"description": "Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.",
+		"spaceComplexity": "O(log(n))",
+		"timeComplexity": "O(nlog(n))"
+	}
+}

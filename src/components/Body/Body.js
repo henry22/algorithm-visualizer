@@ -242,7 +242,7 @@ const Body = (props) => {
           <Footer />
         </Grid>
 
-        <SortInfo isEnding={isEnding} handleClose={handleClose} />
+        <SortInfo isEnding={isEnding} handleClose={handleClose} algorithm={algorithm} />
       </Container>
     </>
   )

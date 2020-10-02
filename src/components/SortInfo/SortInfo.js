@@ -1,9 +1,10 @@
 import React from 'react'
 import { Snackbar, IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
+import sortingInfo from './Sorting.json'
 
 const SortInfo = (props) => {
-  const { isEnding, handleClose } = props
+  const { isEnding, handleClose, algorithm } = props
   return (
     <Snackbar
       anchorOrigin={{
@@ -19,18 +20,18 @@ const SortInfo = (props) => {
             <table style={{ borderSpacing: '15px' }}>
               <thead>
                 <tr>
-                  <td>Bubble Sort</td>
+                  <td>{algorithm && sortingInfo[algorithm].title}</td>
                   <td>Performance</td>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td style={{ wordWrap: 'break-word', width: '500px' }}>
-                    Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
-                      </td>
+                    {algorithm && sortingInfo[algorithm].description}
+                  </td>
                   <td>
-                    Space Complexity: <code>O(1)</code><br />
-                    Time Complexity: <code>O(n^2)</code>
+                    Space Complexity: <code>{algorithm && sortingInfo[algorithm].spaceComplexity}</code><br />
+                    Time Complexity: <code>{algorithm && sortingInfo[algorithm].timeComplexity}</code>
                   </td>
                 </tr>
               </tbody>
