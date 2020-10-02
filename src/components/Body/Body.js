@@ -95,10 +95,8 @@ const Body = (props) => {
           {open.text}
         </Alert>
       </Collapse>
-      <Container maxWidth="lg" style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-        <Grid container justify="center" style={{
-          maxHeight: '500px'
-        }}>
+      <Container maxWidth="lg" style={{ height: 'calc(100vh - 64px)', display: 'flex', alignItems: 'center', marginTop: '64px' }}>
+        <Grid container justify="center">
           {inputType === 'DefaultInput' && (
             <Grid item xs={12}>
               <Typography component="h4" variant="h4">
