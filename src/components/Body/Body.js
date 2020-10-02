@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Chart from '../Chart/Chart'
 import Footer from '../Footer/Footer'
-import { Container, Grid, Snackbar, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, IconButton, Collapse } from '@material-ui/core'
+import SortInfo from '../SortInfo/SortInfo'
+import { Container, Grid, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, Collapse, IconButton } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close'
 import { debounce } from 'lodash'
@@ -199,23 +200,7 @@ const Body = (props) => {
           <Footer />
         </Grid>
 
-        <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left'
-          }}
-          open={isEnding}
-          autoHideDuration={3000}
-          onClose={handleClose}
-          message="Sorting completed!"
-          action={
-            <React.Fragment>
-              <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            </React.Fragment>
-          }
-        />
+        <SortInfo isEnding={isEnding} handleClose={handleClose} />
       </Container>
     </>
   )
