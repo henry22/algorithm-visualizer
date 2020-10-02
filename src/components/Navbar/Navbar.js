@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.css'
-import { AppBar, Toolbar, FormControl, FormControlLabel, RadioGroup, Radio, Typography, Grid } from '@material-ui/core'
+import { AppBar, Toolbar, FormControl, FormControlLabel, RadioGroup, Radio, Grid } from '@material-ui/core'
+import logo from '../../logo.png'
 
 const Navbar = (props) => {
   const { algorithm, updateAlgorithm } = props
@@ -12,9 +13,11 @@ const Navbar = (props) => {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <Typography variant="h6">Logo</Typography>
+        <Grid item xs={2}>
+          <img src={logo} alt="Logo" />
+        </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={10}>
           <FormControl component="fieldset">
             <RadioGroup
               row

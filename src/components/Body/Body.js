@@ -75,7 +75,7 @@ const Body = (props) => {
     <>
       <Collapse in={open.isOpen} style={{ position: 'absolute', top: '64px', width: '100%' }}>
         <Alert
-          severity="info"
+          severity="error"
           action={
             <IconButton
               aria-label="close"
