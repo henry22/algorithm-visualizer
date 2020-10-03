@@ -5,6 +5,12 @@
 		"spaceComplexity": "O(1)",
 		"timeComplexity": "O(n^2)"
 	},
+	"insertionSort": {
+		"title": "Insertion Sort",
+		"description": "Insertion Sort is a simple sorting algorithm that iterates through an array and at each iteration it removes one element from the array, finds the location it belongs to in the sorted list and inserts it there, repeating until no elements remain in the unsorted list.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "Θ(n^2)"
+	},
 	"mergeSort": {
 		"title": "Merge Sort",
 		"description": "Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows: Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted). Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.",
