@@ -19,8 +19,14 @@
 	},
 	"quickSort": {
 		"title": "Quick Sort",
-		"description": "Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.",
+		"description": "Quick Sort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.",
 		"spaceComplexity": "O(log(n))",
+		"timeComplexity": "O(nlog(n))"
+	},
+	"heapSort": {
+		"title": "Heap Sort",
+		"description": "Heap Sort algorithm can be divided into two parts. In the first step, a heap is built out of the data. The heap is often placed in an array with the layout of a complete binary tree. In the second step, a sorted array is created by repeatedly removing the largest element from the heap (the root of the heap), and inserting it into the array. The heap is updated after each removal to maintain the heap property. Once all objects have been removed from the heap, the result is a sorted array.",
+		"spaceComplexity": "O(1)",
 		"timeComplexity": "O(nlog(n))"
 	}
 }

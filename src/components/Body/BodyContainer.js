@@ -10,8 +10,9 @@ import bubbleSort from '../../algorithms/sorting/bubbleSort'
 import mergeSort from '../../algorithms/sorting/mergeSort'
 import quickSort from '../../algorithms/sorting/quickSort'
 import insertionSort from '../../algorithms/sorting/insertionSort'
+import heapSort from '../../algorithms/sorting/heapSort'
 
-const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort })
+const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort })
 
 const mapDispatchToProps = () => dispatch => ({
   generateArray: length => {
@@ -36,6 +37,8 @@ const mapDispatchToProps = () => dispatch => ({
       doSort = quickSort
     } else if (algorithm === 'insertionSort') {
       doSort = insertionSort
+    } else if (algorithm === 'heapSort') {
+      doSort = heapSort
     } else {
       return
     }
