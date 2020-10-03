@@ -1,5 +1,4 @@
 import React from 'react'
-import './Navbar.css'
 import { AppBar, Toolbar, FormControl, FormControlLabel, RadioGroup, Radio, Grid } from '@material-ui/core'
 import logo from '../../logo.png'
 

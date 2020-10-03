@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
+import Slider from '../Slider/Slider'
 import Chart from '../Chart/Chart'
 import Footer from '../Footer/Footer'
 import SortInfo from '../SortInfo/SortInfo'
@@ -156,16 +157,11 @@ const Body = (props) => {
                 style={{ color: color }}>
                 Change items size
               </span>
-              <input
-                type="range"
-                min={minItems}
-                max={maxItems}
-                step="1"
-                style={{ background: color, cursor: cursor }}
-                disabled={isRunning ? "disabled" : null}
-                onChange={handleChange}
-                value={array.length}
-              />
+              <Slider
+                minItems={minItems}
+                maxItems={maxItems}
+                styling={{ background: color, cursor: cursor }}
+                isRunning={isRunning} handleChange={handleChange} length={array.length} />
             </Grid>
           )}
 
