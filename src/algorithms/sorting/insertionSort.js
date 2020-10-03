@@ -8,16 +8,65 @@ import { setEnding } from '../../reducers/isEnd'
 function insertionSort(stateArray, dispatch, speed) {
   let array = stateArray.slice(0)
   let toDispatch = []
+  let sorted = false
+  let round = 0
 
-  for (let i = 1; i < array.length; i++) {
-    let key = array[i]
-    let j = i - 1
-    while (key < array[j] && j >= 0) {
-      toDispatch.push([j, j + 1])
-      array[j + 1] = array[j]
-      j--
+  while (!sorted) {
+    sorted = true
+    for (let i = 1; i < array.length; i++) {
+      let j = i
+      toDispatch.push([j - 1, j])
+      while (j > 0 && array[j - 1] > array[j]) {
+        toDispatch.push([j - 1, j, true])
+        const temp = array[j]
+        array[j] = array[j - 1]
+        array[j - 1] = temp
+        j--;
+        sorted = false
+        toDispatch.push(array.slice(0))
+        toDispatch.push([])
+      }
     }
-    array[j + 1] = key
   }
 
+  while (round <= array.length) {
+    toDispatch.push([true, round])
+    round++
+  }
+
+  handleDispatch(toDispatch, dispatch, array, speed)
+  return array
 }
+
+function handleDispatch(toDispatch, dispatch, array, speed) {
+  if (!toDispatch.length) {
+    dispatch(setCurrentInsertionSort(array.map((num, index) => index)))
+    setTimeout(() => {
+      dispatch(setCurrentInsertionSort([]))
+      dispatch(setCurrentSorted(array.map((num, index) => index)))
+      dispatch(setRunning(false))
+      dispatch(setEnding(true))
+    }, 1000)
+    return
+  }
+
+  let dispatchFunction
+
+  if (toDispatch[0].length > 3) {
+    dispatchFunction = setArray
+  } else if (toDispatch[0].length === 3 || toDispatch[0].length === 0) {
+    dispatchFunction = setCurrentSwapper
+  } else if (toDispatch[0].length === 2 && typeof toDispatch[0][0] === 'boolean') {
+    dispatchFunction = setCurrentSorted
+  } else {
+    dispatchFunction = setCurrentInsertionSort
+  }
+
+  dispatch(dispatchFunction(toDispatch.shift()))
+
+  setTimeout(() => {
+    handleDispatch(toDispatch, dispatch, array, speed)
+  }, speed)
+}
+
+export default insertionSort

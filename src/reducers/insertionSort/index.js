@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'react-redux'
+import { createAction, handleActions } from 'redux-actions'
 
 const initialState = []
 

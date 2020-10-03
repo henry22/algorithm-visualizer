@@ -17,10 +17,10 @@ const Body = (props) => {
   })
   const minItems = 4;
   const maxItems = 30;
-  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm, close, stopRunning, startRunning } = props
+  const { array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, generateArray, generateCustomArray, isRunning, isEnding, sort, algorithm, close, stopRunning, startRunning, currentInsertionSort } = props
   const customRef = useRef(null)
 
-  const color = isRunning ? "rgba(214, 29, 29, 0.8)" : "gray"
+  const color = isRunning ? "#D61D1D" : "gray"
   const cursor = isRunning ? 'auto' : 'pointer'
 
   useEffect(() => {
@@ -236,13 +236,13 @@ const Body = (props) => {
           </Grid>
 
           <Grid item xs={12} style={{ position: 'relative', height: '50vh' }}>
-            <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentMergeSort={currentMergeSort} currentSorted={currentSorted} currentQuickSort={currentQuickSort} pivot={pivot} />
+            <Chart array={array} currentSwapper={currentSwapper} currentBubbleSortTwo={currentBubbleSortTwo} currentMergeSort={currentMergeSort} currentSorted={currentSorted} currentQuickSort={currentQuickSort} pivot={pivot} currentInsertionSort={currentInsertionSort} />
           </Grid>
 
           <Footer />
         </Grid>
 
-        <SortInfo isEnding={isEnding} handleClose={handleClose} algorithm={algorithm} />
+        {/* <SortInfo isEnding={isEnding} handleClose={handleClose} algorithm={algorithm} /> */}
       </Container>
     </>
   )

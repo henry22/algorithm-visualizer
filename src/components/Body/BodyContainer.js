@@ -9,8 +9,9 @@ import { setEnding } from '../../reducers/isEnd'
 import bubbleSort from '../../algorithms/sorting/bubbleSort'
 import mergeSort from '../../algorithms/sorting/mergeSort'
 import quickSort from '../../algorithms/sorting/quickSort'
+import insertionSort from '../../algorithms/sorting/insertionSort'
 
-const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm })
+const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort })
 
 const mapDispatchToProps = () => dispatch => ({
   generateArray: length => {
@@ -33,6 +34,8 @@ const mapDispatchToProps = () => dispatch => ({
       doSort = mergeSort
     } else if (algorithm === 'quickSort') {
       doSort = quickSort
+    } else if (algorithm === 'insertionSort') {
+      doSort = insertionSort
     } else {
       return
     }
