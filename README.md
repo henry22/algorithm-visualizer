@@ -1,18 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![logo](https://i.imgur.com/WjuFDaP.png)
 
 ## User Story
-- Users are able to view the sorting algorithm animation
-- Users are able to adjust the number of bar charts
-- Users are able to customize the number of bar charts
+- Users are able to view the different sorting algorithm animations
+- Users are able to drag the slider for generating different random numbers for sorting
+- Users are able to customize the numbers for sorting
 - Users are able to adjust the speed of the animation
-- Users are able to reset generating new bar charts
+- Users are able to click the regenerate button to generate same amount of different numbers for sorting
+- Users are able to view the introduction of each sorting and space & time complexity after finishing sorting
 
 ## Tech stack
 - Front End
   - React
+  - Redux
   - Material-UI
+  - Emotion
   - Framer Motion
-- Back End(In progress)
+  - redux-actions
+  - lodash
+
+## Project preview
+*Main page*
+![mainPage](https://i.imgur.com/ZJ39JY2.png)
+
+*Finishing sorting*
+![finish](https://i.imgur.com/UDOi72k.png)
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
