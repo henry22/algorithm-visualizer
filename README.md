@@ -8,6 +8,13 @@
 - Users are able to click the regenerate button to generate same amount of different numbers for sorting
 - Users are able to view the introduction of each sorting and space & time complexity after finishing sorting
 
+## In progress
+- Add pseudo code statement for assistance when sorting in the process
+- Allow pausing the animation
+- RWD
+- Create other sorting algorithms animation
+- Categorize different algorithms
+
 ## Tech stack
 - Front End
   - React
