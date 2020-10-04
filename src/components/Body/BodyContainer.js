@@ -11,15 +11,16 @@ import mergeSort from '../../algorithms/sorting/mergeSort'
 import quickSort from '../../algorithms/sorting/quickSort'
 import insertionSort from '../../algorithms/sorting/insertionSort'
 import heapSort from '../../algorithms/sorting/heapSort'
+import { debounce } from 'lodash'
 
 const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort })
 
 const mapDispatchToProps = () => dispatch => ({
-  generateArray: length => {
+  generateArray: debounce(length => {
     const array = generateRandomArray(length)
     dispatch(setArray(array))
     dispatch(setCurrentSorted([]))
-  },
+  }, 600),
   generateCustomArray: array => {
     dispatch(setArray(array))
     dispatch(setCurrentSorted([]))
