@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Slider from '../Slider/Slider'
 import Chart from '../Chart/Chart'
 import Footer from '../Footer/Footer'
