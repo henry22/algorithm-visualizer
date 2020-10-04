@@ -8,30 +8,21 @@ import { setEnding } from '../../reducers/isEnd'
 function insertionSort(stateArray, dispatch, speed) {
   let array = stateArray.slice(0)
   let toDispatch = []
-  let sorted = false
-  let round = 0
 
-  while (!sorted) {
-    sorted = true
-    for (let i = 1; i < array.length; i++) {
-      let j = i
+  for (let i = 1; i <= array.length; i++) {
+    let j = i
+    toDispatch.push([j - 1, j])
+    while (j > 0 && array[j - 1] > array[j]) {
       toDispatch.push([j - 1, j])
-      while (j > 0 && array[j - 1] > array[j]) {
-        toDispatch.push([j - 1, j, true])
-        const temp = array[j]
-        array[j] = array[j - 1]
-        array[j - 1] = temp
-        j--;
-        sorted = false
-        toDispatch.push(array.slice(0))
-        toDispatch.push([])
-      }
+      const temp = array[j]
+      array[j] = array[j - 1]
+      array[j - 1] = temp
+      toDispatch.push([j - 1, j, true])
+      j--;
+      toDispatch.push(array.slice(0))
+      toDispatch.push([])
     }
-  }
-
-  while (round <= array.length) {
-    toDispatch.push([true, round])
-    round++
+    toDispatch.push([true, i - 1])
   }
 
   handleDispatch(toDispatch, dispatch, array, speed)
