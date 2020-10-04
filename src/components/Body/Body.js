@@ -6,9 +6,9 @@ import SortInfo from '../SortInfo/SortInfo'
 import { Container, Grid, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, Button, Collapse, IconButton } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close'
-import { debounce } from 'lodash'
 
 const Body = (props) => {
+  const [sliderValue, setSliderValue] = useState(5);
   const [inputType, setInputType] = useState('DefaultInput');
   const [speed, setSpeed] = useState(1000);
   const [customNumbers, setCustomNumbers] = useState([]);
@@ -25,15 +25,12 @@ const Body = (props) => {
   const cursor = isRunning ? 'auto' : 'pointer'
 
   useEffect(() => {
-    generateArray(5)
-  }, [generateArray])
-
-  const delayHandleChange = useCallback(debounce((newValue) => {
-    generateArray(newValue)
-  }, 50), [])
+    generateArray(sliderValue)
+  }, [generateArray, sliderValue])
 
   const handleChange = (e) => {
-    delayHandleChange(e.target.value)
+    const { value } = e.target
+    setSliderValue(value)
   }
 
   const changeSpeed = (e) => {
@@ -146,7 +143,7 @@ const Body = (props) => {
           {inputType === 'DefaultInput' && (
             <Grid item xs={12}>
               <Typography component="h4" variant="h4">
-                Number of items: {array.length}
+                Number of items: {sliderValue}
               </Typography>
             </Grid>
           )}
@@ -161,7 +158,7 @@ const Body = (props) => {
                 minItems={minItems}
                 maxItems={maxItems}
                 styling={{ background: color, cursor: cursor }}
-                isRunning={isRunning} handleChange={handleChange} length={array.length} />
+                isRunning={isRunning} handleChange={handleChange} length={sliderValue} />
             </Grid>
           )}
 
