@@ -11,9 +11,10 @@ import mergeSort from '../../algorithms/sorting/mergeSort'
 import quickSort from '../../algorithms/sorting/quickSort'
 import insertionSort from '../../algorithms/sorting/insertionSort'
 import heapSort from '../../algorithms/sorting/heapSort'
+import selectionSort from '../../algorithms/sorting/selectionSort'
 import { debounce } from 'lodash'
 
-const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort })
+const mapStateToProps = ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort, currentSelectionSort }) => ({ array, currentBubbleSortTwo, currentMergeSort, currentQuickSort, pivot, currentSwapper, currentSorted, isRunning, isEnding, algorithm, currentInsertionSort, currentHeapSort, currentSelectionSort })
 
 const mapDispatchToProps = () => dispatch => ({
   generateArray: debounce(length => {
@@ -40,6 +41,8 @@ const mapDispatchToProps = () => dispatch => ({
       doSort = insertionSort
     } else if (algorithm === 'heapSort') {
       doSort = heapSort
+    } else if (algorithm === 'selectionSort') {
+      doSort = selectionSort
     } else {
       return
     }

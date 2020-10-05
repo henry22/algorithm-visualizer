@@ -10,6 +10,7 @@ import { currentMergeSort } from './mergeSort'
 import { currentQuickSort, pivot } from './quickSort'
 import { currentInsertionSort } from './insertionSort'
 import { currentHeapSort } from './heapSort'
+import { currentSelectionSort } from './selectionSort'
 
 const rootReducer = combineReducers({
   array,
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   currentQuickSort,
   pivot,
   currentInsertionSort,
-  currentHeapSort
+  currentHeapSort,
+  currentSelectionSort
 })
 
 export default rootReducer

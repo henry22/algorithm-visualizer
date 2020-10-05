@@ -17,7 +17,7 @@ const liStyle = {
 }
 
 const Chart = (props) => {
-  const { array, currentSwapper, currentBubbleSortTwo, currentMergeSort, currentSorted, currentQuickSort, pivot, currentInsertionSort, currentHeapSort } = props
+  const { array, currentSwapper, currentBubbleSortTwo, currentMergeSort, currentSorted, currentQuickSort, pivot, currentInsertionSort, currentHeapSort, currentSelectionSort } = props
   let liHeight = Math.floor((window.innerHeight / 2) / 100);
   let liWidth = 32;
 
@@ -27,12 +27,12 @@ const Chart = (props) => {
         let backgroundColor;
         if (currentSwapper.includes(index)) {
           backgroundColor = "#DB3939"
-        } else if (currentBubbleSortTwo.includes(index) || currentMergeSort.includes(index) || currentQuickSort.includes(index) || currentInsertionSort.includes(index) || currentHeapSort.includes(index)) {
+        } else if (currentBubbleSortTwo.includes(index) || currentMergeSort.includes(index) || currentQuickSort.includes(index) || currentInsertionSort.includes(index) || currentHeapSort.includes(index) || currentSelectionSort.includes(index)) {
           backgroundColor = "#4ED860"
-        } else if (pivot === index) {
-          backgroundColor = '#EDEA3B'
         } else if (currentSorted.includes(index)) {
           backgroundColor = "#A95CE8"
+        } else if (pivot === index) {
+          backgroundColor = '#EDEA3B'
         } else {
           backgroundColor = "#4286F4"
         }
