@@ -1,32 +1,38 @@
 {
-  "bubbleSort": {
-    "title": "Bubble Sort",
-    "description": "Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-    "spaceComplexity": "O(1)",
-    "timeComplexity": "O(n^2)"
-  },
-  "insertionSort": {
-    "title": "Insertion Sort",
-    "description": "Insertion Sort is a simple sorting algorithm that iterates through an array and at each iteration it removes one element from the array, finds the location it belongs to in the sorted list and inserts it there, repeating until no elements remain in the unsorted list.",
-    "spaceComplexity": "O(1)",
-    "timeComplexity": "Θ(n^2)"
-  },
-  "mergeSort": {
-    "title": "Merge Sort",
-    "description": "Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows: Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted). Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.",
-    "spaceComplexity": "O(n)",
-    "timeComplexity": "O(nlog(n))"
-  },
-  "quickSort": {
-    "title": "Quick Sort",
-    "description": "Quick Sort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.",
-    "spaceComplexity": "O(log(n))",
-    "timeComplexity": "O(nlog(n))"
-  },
-  "heapSort": {
-    "title": "Heap Sort",
-    "description": "Heap Sort algorithm can be divided into two parts. In the first step, a heap is built out of the data. The heap is often placed in an array with the layout of a complete binary tree. In the second step, a sorted array is created by repeatedly removing the largest element from the heap (the root of the heap), and inserting it into the array. The heap is updated after each removal to maintain the heap property. Once all objects have been removed from the heap, the result is a sorted array.",
-    "spaceComplexity": "O(1)",
-    "timeComplexity": "O(nlog(n))"
-  }
+	"bubbleSort": {
+		"title": "Bubble Sort",
+		"description": "Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "O(n^2)"
+	},
+	"insertionSort": {
+		"title": "Insertion Sort",
+		"description": "Insertion Sort is a simple sorting algorithm that iterates through an array and at each iteration it removes one element from the array, finds the location it belongs to in the sorted list and inserts it there, repeating until no elements remain in the unsorted list.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "Θ(n^2)"
+	},
+	"selectionSort": {
+		"title": "Selection Sort",
+		"description": "Selection Sort is an in-place comparison sorting algorithm that divides the input list into two parts. The algorithm proceeds by finding the smallest element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "Θ(n^2)"
+	},
+	"mergeSort": {
+		"title": "Merge Sort",
+		"description": "Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows: Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted). Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.",
+		"spaceComplexity": "O(n)",
+		"timeComplexity": "O(nlog(n))"
+	},
+	"quickSort": {
+		"title": "Quick Sort",
+		"description": "Quick Sort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.",
+		"spaceComplexity": "O(log(n))",
+		"timeComplexity": "O(nlog(n))"
+	},
+	"heapSort": {
+		"title": "Heap Sort",
+		"description": "Heap Sort algorithm can be divided into two parts. In the first step, a heap is built out of the data. The heap is often placed in an array with the layout of a complete binary tree. In the second step, a sorted array is created by repeatedly removing the largest element from the heap (the root of the heap), and inserting it into the array. The heap is updated after each removal to maintain the heap property. Once all objects have been removed from the heap, the result is a sorted array.",
+		"spaceComplexity": "O(1)",
+		"timeComplexity": "O(nlog(n))"
+	}
 }
